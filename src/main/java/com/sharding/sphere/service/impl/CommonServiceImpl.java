@@ -2,12 +2,13 @@ package com.sharding.sphere.service.impl;
 
 import com.sharding.sphere.domain.entity.OrderEntity;
 import com.sharding.sphere.domain.entity.OrderItemEntity;
-import com.sharding.sphere.repository.OrderItemRepository;
-import com.sharding.sphere.repository.OrderRepository;
+import com.sharding.sphere.persist.OrderItemMapper;
+import com.sharding.sphere.persist.OrderMapper;
 import com.sharding.sphere.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +20,10 @@ import java.util.List;
 @Service
 public class CommonServiceImpl implements CommonService {
 
-    @Autowired
-    private OrderRepository orderRepository;
-    @Autowired
-    private OrderItemRepository orderItemRepository;
+    @Resource
+    private OrderMapper orderMapper;
+    @Resource
+    private OrderItemMapper orderItemMapper;
 
 
     @Override
@@ -33,12 +34,12 @@ public class CommonServiceImpl implements CommonService {
             OrderEntity order = new OrderEntity();
             order.setUserId(i);
             order.setStatus("INSERT_TEST_JPA");
-            orderRepository.save(order);
+            orderMapper.insert(order);
             OrderItemEntity item = new OrderItemEntity();
             item.setOrderId(order.getOrderId());
             item.setUserId(i);
             item.setStatus("INSERT_TEST_JPA");
-            orderItemRepository.save(item);
+            orderItemMapper.insert(item);
             result.add(order.getOrderId());
         }
 

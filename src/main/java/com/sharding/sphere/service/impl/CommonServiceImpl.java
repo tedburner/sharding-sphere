@@ -44,4 +44,9 @@ public class CommonServiceImpl implements CommonService {
         }
 
     }
+
+    @Override
+    public List<OrderEntity> findSomeOne() {
+        return orderMapper.selectAll();
+    }
 }

@@ -8,37 +8,37 @@
 
 ```sql
 ## 创建数据库0
-CREATE DATABASE ds0;
+CREATE DATABASE ds0 DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE TABLE `t_order` (
-  `order_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `status` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `order_id` bigint(12) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `user_id` bigint(12) DEFAULT NULL COMMENT '用户ID',
+  `status` varchar(64) NOT NULL COMMENT '订单状态',
   PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=344805296301932545 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB COMMENT '订单表';
 
 CREATE TABLE `t_order_item` (
-  `order_item_id` bigint(20) NOT NULL,
-  `order_id` bigint(20) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `order_item_id` bigint(12) NOT NULL,
+  `order_id` bigint(12) DEFAULT NULL,
+  `user_id` bigint (12) DEFAULT NULL,
+  `status` varchar(64) NOT NULL COMMENT '订单状态',
   PRIMARY KEY (`order_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB COMMENT '订单目录表';
 
 ## 创建数据库1
-CREATE DATABASE ds1;
+CREATE DATABASE ds1 DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE TABLE `t_order` (
-  `order_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `status` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=344805296301932545 DEFAULT CHARSET=utf8;
+    `order_id` bigint(12) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+    `user_id` bigint(12) DEFAULT NULL COMMENT '用户ID',
+    `status` varchar(64) NOT NULL COMMENT '订单状态',
+    PRIMARY KEY (`order_id`) USING BTREE
+) ENGINE=InnoDB COMMENT '订单表';
 
 CREATE TABLE `t_order_item` (
-  `order_item_id` bigint(20) NOT NULL,
-  `order_id` bigint(20) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`order_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `order_item_id` bigint(12) NOT NULL,
+    `order_id` bigint(12) DEFAULT NULL,
+    `user_id` bigint (12) DEFAULT NULL,
+    `status` varchar(64) NOT NULL COMMENT '订单状态',
+    PRIMARY KEY (`order_item_id`)
+) ENGINE=InnoDB COMMENT '订单目录表';
 
 ```
